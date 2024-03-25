@@ -1,22 +1,21 @@
 <script setup>
-import { getDataToHomePage } from "@/service/apiService.js";
+import { getDataToSeriesPage } from "../service/apiService.js";
+import CardView from "@/components/CardView.vue";
 import PaginationView from "@/components/PaginationView.vue";
 import router from "@/router/index.js";
-import { defineAsyncComponent, watch, watchEffect } from "vue";
-import { useRoute } from "vue-router";
 
 const props = defineProps(["page"]);
 const page = Number(props.page);
 const maxPage = 500;
-const data = await getDataToHomePage(page);
+const data = await getDataToSeriesPage(page);
 const results = await data.results;
-const Card = defineAsyncComponent(() => import("../components/CardView.vue"));
 
-const nextPage = async () => {
+const nextPage = () => {
   router
     .push({
-      name: "home",
+      name: "series",
       params: { page: page < maxPage ? page + 1 : page },
+      replace: true,
     })
     .then(() => {
       router.go();
@@ -25,8 +24,9 @@ const nextPage = async () => {
 const prevPage = () => {
   router
     .push({
-      name: "home",
+      name: "series",
       params: { page: page > 1 ? page - 1 : 1 },
+      replace: true,
     })
     .then(() => {
       router.go();
@@ -36,7 +36,7 @@ const prevPage = () => {
 
 <template>
   <div class="grid grid-cols-2 md:grid-cols-5 gap-10 py-4 px-12 self-center">
-    <Card v-for="item in results" :key="item.id" :itemObj="item" />
+    <CardView v-for="item in results" :key="item.id" :itemObj="item" />
   </div>
   <PaginationView
     class="p-10"
