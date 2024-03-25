@@ -7,7 +7,7 @@
     ></div>
     <img :src="imageUrl(obj)" class="w-full h-full object-cover" v-if="obj" />
     <div
-      class="absolute items-center gap-5 justify-center flex flex-col"
+      class="absolute items-center gap-5 justify-center flex flex-col w-2/3 h-3/4 sm:w-2/4 sm:h-2/3 "
       v-if="obj"
     >
       <h1
@@ -15,6 +15,8 @@
       >
         {{ props.type == "tv" ? obj.name : obj.title }}
       </h1>
+      <h2 class="text-start self-start text-wrap font-Roboto text-xl italic text-slate-400">{{obj.overview}}</h2>
+
       <div class="self-start flex justify-center items-center gap-3">
         <h3 class="text-lg font-bold font-Roboto text-slate-300 text-start">
           {{
@@ -29,7 +31,7 @@
         </h3>
         <!-- <h3>{{ obj.runtime }}</h3> -->
       </div>
-      <iframe width="560" height="315" :src="trailer"></iframe>
+      <iframe class="w-full h-full " :src="trailer"></iframe>
       <button
         v-if="!isFavorited"
         class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden font-bold rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 text-gray-300 hover:text-white font-Roboto text-xl"
