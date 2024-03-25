@@ -51,7 +51,7 @@
         <span
           class="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"
         ></span>
-        <span class="relative">Save <i class="fa-solid fa-heart"></i></span>
+        <span class="relative">Salvar <i class="fa-solid fa-heart"></i></span>
       </button>
       <button
         v-if="isFavorited"
@@ -65,12 +65,12 @@
           class="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"
         ></span>
         <span class="relative"
-          ><i class="fa-solid fa-heart-crack"></i> Remove</span
+          ><i class="fa-solid fa-heart-crack"></i> Remover</span
         >
       </button>
     </div>
     <div v-else class="h-screen w-screen overflow-hidden absolute flex flex-col justify-center items-center">
-    <h1 class="text-4xl text-slate-200">Loading...</h1>
+    <h1 class="text-4xl text-slate-200">Carregando...</h1>
     </div>
   
 </template>
