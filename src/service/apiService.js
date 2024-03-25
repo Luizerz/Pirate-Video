@@ -62,7 +62,7 @@ async function getTrailerByID(id, type) {
     })
     .catch((err) => console.error(err));
   let dataFiltered = data.results.filter((e) => e.type == "Trailer");
-  return dataFiltered[0].key
+  return dataFiltered == undefined ? "" : dataFiltered[0].key
 }
 
 export {

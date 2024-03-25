@@ -70,7 +70,7 @@
       </button>
     </div>
     <div v-else class="h-screen w-screen overflow-hidden absolute flex flex-col justify-center items-center">
-    <h1 class="text-2xl">loading...</h1>
+    <h1 class="text-4xl text-slate-200">Loading...</h1>
     </div>
   
 </template>
