@@ -5,17 +5,57 @@
     <div
       class="bg-gradient-to-r from-slate-900 to-transparent h-full w-full absolute"
     ></div>
-    <img :src="imageUrl(obj)" class="w-full h-full object-cover" v-if="obj"/>
+    <img :src="imageUrl(obj)" class="w-full h-full object-cover" v-if="obj" />
+    <div
+      class="absolute items-center gap-5 justify-center flex flex-col"
+      v-if="obj"
+    >
+      <iframe
+        width="560"
+        height="315"
+        :src="trailer"
+      ></iframe>
+      <button
+        v-if="!isFavorited"
+        class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden font-bold rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 text-gray-300 hover:text-white font-Roboto text-xl"
+        @click="save(obj)"
+      >
+        <span
+          class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+        >
+          Salvar <i class="fa-solid fa-heart-circle-plus"></i>
+        </span>
+      </button>
+    </div>
     <h1 v-else>loading...</h1>
-
   </div>
 </template>
 <script setup>
-import { getDataByID } from "@/service/apiService.js";
+import { getDataByID, getTrailerByID } from "@/service/apiService.js";
 import { ref } from "vue";
+import storage from "@/service/storage";
+import router from "@/router/index.js";
 const props = defineProps(["item", "type"]);
-const obj = ref(null)
-await getDataByID(props.item, props.type).then((data) => obj.value = data)
+const obj = ref(null);
+const trailer = ref(null);
+const isFavorited = storage.getItem(props.item);
+
+const save = () => {
+  storage.addItem(obj.value);
+  router.go();
+};
+
+await getDataByID(props.item, props.type).then((data) => (obj.value = data));
+await getTrailerByID(props.item, props.type).then(
+  (data) => {
+    if (data) {
+      trailer.value = 'https://www.youtube.com/embed/'+ data
+    } else {
+      trailer.value = 'https://www.youtube.com/embed/'
+    }
+  }
+);
+
 const imageUrl = (obj) => {
   return "https://image.tmdb.org/t/p/original" + obj.backdrop_path;
 };

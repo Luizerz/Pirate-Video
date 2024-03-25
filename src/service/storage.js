@@ -21,6 +21,16 @@ class CustomStorage {
       });
       localStorage.setItem('favoriteList', JSON.stringify(tempList))
     }
+    getItem(objID){
+      const tempList = this.getFavoriteList()
+      let isOnTheList = false
+      tempList.forEach((element)=>{
+        if (element.id == objID){
+          isOnTheList = true
+        }
+      })
+      return isOnTheList
+    }
     #createFavoriteList() {
       localStorage.setItem('favoriteList', JSON.stringify([]))
     }

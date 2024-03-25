@@ -5,6 +5,8 @@
 import storage from "@/service/storage.js";
 import { reactive } from "vue";
 const favoriteList = reactive(storage.getFavoriteList());
-console.log(favoriteList)
+favoriteList.forEach(element => {
+  console.log(element)
+});
 
 </script>

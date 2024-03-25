@@ -39,8 +39,8 @@ async function getDataToSeriesPage(page) {
 }
 
 async function getDataByID(id, type) {
-  const itemID = id ? id : 3000
-  const itemType = type ? type : 'movie'
+  const itemID = id ? id : 3000;
+  const itemType = type ? type : "movie";
   const api_key = "0a95b08139be9578a467a7da55a5748f";
   const url = `https://api.themoviedb.org/3/${itemType}/${itemID}?api_key=${api_key}`;
   let data = await axios
@@ -52,9 +52,23 @@ async function getDataByID(id, type) {
   return data;
 }
 
+async function getTrailerByID(id, type) {
+  const api_key = "0a95b08139be9578a467a7da55a5748f";
+  const url = `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${api_key}`;
+  let data = await axios
+    .get(url)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => console.error(err));
+  let dataFiltered = data.results.filter((e) => e.type == "Trailer");
+  return dataFiltered[0].key
+}
+
 export {
   getDataToHomePage,
   getDataToSeriesPage,
   getDataToMoviePage,
   getDataByID,
+  getTrailerByID,
 };
