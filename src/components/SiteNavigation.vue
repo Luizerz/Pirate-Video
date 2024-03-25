@@ -62,8 +62,8 @@ function openMenu() {
     navOpenMenu.value = "flex-col";
     menu.value = "fa-solid fa-xmark";
   } else {
-    navItensOpenMenu.value = "hidden";
-    navOpenMenu.value = "flex-row";
+    navItensOpenMenu.value = "hidden transition-all ";
+    navOpenMenu.value = "flex-row ";
     menu.value = "fa-solid fa-bars";
   }
   
