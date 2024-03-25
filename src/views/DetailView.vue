@@ -1,61 +1,71 @@
 <template>
+  <div class="h-screen w-screen overflow-hidden absolute">
+    <img
+      :src="imageUrl(obj)"
+      alt="movie/serie banner"
+      class="h-full w-full object-cover"
+    />
+  </div>
   <div
-    class="w-screen h-screen flex justify-center items-center absolute overflow-clip"
+    class="absolute w-screen h-screen bg-gradient-to-r from-slate-950 to-transparent"
+  ></div>
+  <div
+    class="h-screen w-screen overflow-hidden absolute flex flex-col items-center md:items-start justify-center pl-10"
   >
-    <div
-      class="bg-gradient-to-r from-slate-900 to-transparent h-full w-full absolute"
-    ></div>
-    <img :src="imageUrl(obj)" class="w-full h-full object-cover" v-if="obj" />
-    <div
-      class="absolute items-center gap-5 justify-center flex flex-col w-2/3 h-3/4 sm:w-2/4 sm:h-2/3 "
-      v-if="obj"
-    >
-      <h1
-        class="text-4xl font-bold font-Roboto text-white text-start self-start"
-      >
-        {{ props.type == "tv" ? obj.name : obj.title }}
-      </h1>
-      <h2 class="text-start self-start text-wrap font-Roboto text-xl italic text-slate-400">{{obj.overview}}</h2>
-
-      <div class="self-start flex justify-center items-center gap-3">
-        <h3 class="text-lg font-bold font-Roboto text-slate-300 text-start">
-          {{
-            props.type == "tv"
-              ? obj.first_air_date.split("-")[0]
-              : obj.release_date.split("-")[0]
-          }}
-        </h3>
-        <h3 class="text-green-300 font-Roboto">
-          <i class="fa-solid fa-star"></i>
-          {{ obj.vote_average }}
-        </h3>
-        <!-- <h3>{{ obj.runtime }}</h3> -->
+    <div class="w-3/4 md:w-1/3 items-start">
+      <div class="flex items-center gap-5">
+        <h1 class="text-4xl font-bold font-Roboto text-white">
+          {{ props.type == "tv" ? obj.name : obj.title }}
+        </h1>
+        <div class="flex items-center gap-2">
+          <h3 class="text-lg font-bold font-Roboto text-slate-300">
+            {{
+              props.type == "tv"
+                ? obj.first_air_date.split("-")[0]
+                : obj.release_date.split("-")[0]
+            }}
+          </h3>
+          <h3 class="text-white md:text-green-300 font-Roboto">
+            <i class="fa-solid fa-star"></i>
+            {{ obj.vote_average }}
+          </h3>
+          
+        </div>
       </div>
-      <iframe class="w-full h-full " :src="trailer"></iframe>
-      <button
-        v-if="!isFavorited"
-        class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden font-bold rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 text-gray-300 hover:text-white font-Roboto text-xl"
-        @click="save(obj)"
+      <p
+        class="font-Roboto text-xl italic text-slate-100 line-clamp-2 sm:line-clamp-4"
       >
-        <span
-          class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
-        >
-          Salvar <i class="fa-solid fa-heart-circle-plus"></i>
-        </span>
-      </button>
-      <button
-        v-if="isFavorited"
-        class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden font-bold rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 text-gray-300 hover:text-white font-Roboto text-xl"
-        @click="remove(obj)"
-      >
-        <span
-          class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
-        >
-          Remover <i class="fa-solid fa-heart-crack"></i>
-        </span>
-      </button>
+        {{ obj.overview }}
+      </p>
     </div>
-    <h1 v-else>loading...</h1>
+
+    <iframe :src="trailer" class="w-5/6 h-2/6 md:w-1/3"></iframe>
+    <button
+      v-if="!isFavorited"
+      class="relative inline-flex items-center justify-center px-10 py-4 overflow-hidden font-mono font-medium tracking-tighter text-white bg-gray-800 rounded-lg group mt-10 "
+      @click="save(obj)"
+    >
+      <span
+        class="absolute w-0 h-0 transition-all duration-500 ease-out bg-green-500 rounded-full group-hover:w-56 group-hover:h-56"
+      ></span>
+      <span
+        class="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"
+      ></span>
+      <span class="relative">Save <i class="fa-solid fa-heart"></i></span>
+    </button>
+    <button
+      v-if="isFavorited"
+      class="relative inline-flex items-center justify-center px-10 py-4 overflow-hidden font-mono font-medium tracking-tighter text-white bg-gray-800 rounded-lg group mt-10"
+      @click="remove(obj)"
+    >
+      <span
+        class="absolute w-0 h-0 transition-all duration-500 ease-out bg-red-500 rounded-full group-hover:w-56 group-hover:h-56"
+      ></span>
+      <span
+        class="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"
+      ></span>
+      <span class="relative"><i class="fa-solid fa-heart-crack"></i> Remove</span>
+    </button>
   </div>
 </template>
 <script setup>
