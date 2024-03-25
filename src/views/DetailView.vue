@@ -14,7 +14,7 @@
       class="h-screen w-screen overflow-hidden absolute flex flex-col items-center md:items-start justify-center pl-10" v-if="obj"
     >
       <div class="w-3/4 md:w-1/3 items-start">
-        <div class="flex items-center gap-5">
+        <div class="flex items-center gap-5 flex-col sm:flex-row">
           <h1 class="text-4xl font-bold font-Roboto text-white">
             {{ props.type == "tv" ? obj.name : obj.title }}
           </h1>
