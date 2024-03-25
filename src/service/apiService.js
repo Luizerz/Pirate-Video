@@ -1,8 +1,10 @@
 import axios from "axios";
 
+const api_key = await import.meta.env.VITE_API_KEY
+console.log(api_key)
+
 async function getDataToHomePage(page) {
   const pageNumber = page ? page : 1;
-  const api_key = "0a95b08139be9578a467a7da55a5748f";
   const url = `https://api.themoviedb.org/3/trending/all/day?api_key=${api_key}&page=${pageNumber}`;
   let data = await axios
     .get(url)
@@ -14,7 +16,7 @@ async function getDataToHomePage(page) {
 }
 async function getDataToMoviePage(page) {
   const pageNumber = page ? page : 1;
-  const api_key = "0a95b08139be9578a467a7da55a5748f";
+
   const url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${api_key}&page=${pageNumber}`;
   let data = await axios
     .get(url)
@@ -27,7 +29,7 @@ async function getDataToMoviePage(page) {
 
 async function getDataToSeriesPage(page) {
   const pageNumber = page ? page : 1;
-  const api_key = "0a95b08139be9578a467a7da55a5748f";
+
   const url = `https://api.themoviedb.org/3/trending/tv/day?api_key=${api_key}&page=${pageNumber}`;
   let data = await axios
     .get(url)
@@ -41,7 +43,7 @@ async function getDataToSeriesPage(page) {
 async function getDataByID(id, type) {
   const itemID = id ? id : 3000;
   const itemType = type ? type : "movie";
-  const api_key = "0a95b08139be9578a467a7da55a5748f";
+ 
   const url = `https://api.themoviedb.org/3/${itemType}/${itemID}?api_key=${api_key}`;
   let data = await axios
     .get(url)
@@ -53,7 +55,6 @@ async function getDataByID(id, type) {
 }
 
 async function getTrailerByID(id, type) {
-  const api_key = "0a95b08139be9578a467a7da55a5748f";
   const url = `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${api_key}`;
   let data = await axios
     .get(url)
