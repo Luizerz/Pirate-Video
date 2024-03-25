@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const api_key = await import.meta.env.VITE_API_KEY
-console.log(api_key)
 
 async function getDataToHomePage(page) {
   const pageNumber = page ? page : 1;
