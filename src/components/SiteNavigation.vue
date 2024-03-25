@@ -25,7 +25,7 @@
         :to="{ name: 'movies', params: { page: 1 } }"
         class="text-slate-300 hover:text-slate-400 relative w-fit sm:block after:block after:content-[''] after:absolute after:h-[3px] after:bg-gradient-to-r after:from-transparent after:via-gray-100 after:to-transparent after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
       >
-        <h2 class="text-xl hover:scale-110">Movies</h2>
+        <h2 class="text-xl hover:scale-110">Filmes</h2>
       </RouterLink>
       <RouterLink
         :class="navItensOpenMenu"
@@ -39,7 +39,7 @@
         :to="{ name: 'favorites'}"
         class="text-slate-300 hover:text-slate-400 ml-0 sm:ml-auto relative w-fit sm:block after:block after:content-[''] after:absolute after:h-[3px] after:bg-gradient-to-r after:from-transparent after:via-gray-100 after:to-transparent after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center "
       >
-        <h2 class="text-xl hover:scale-110">Favorites <i class="fa-solid fa-heart"></i></h2>
+        <h2 class="text-xl hover:scale-110">Favoritos <i class="fa-solid fa-heart"></i></h2>
       </RouterLink>
       <i
         :class="menu"

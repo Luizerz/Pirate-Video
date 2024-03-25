@@ -95,7 +95,7 @@ await getTrailerByID(props.item, props.type).then((data) => {
     trailer.value = "https://www.youtube.com/embed/";
   }
 });
-console.log(obj.value);
+
 const imageUrl = (obj) => {
   return "https://image.tmdb.org/t/p/original" + obj.backdrop_path;
 };
