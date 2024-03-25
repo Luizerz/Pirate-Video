@@ -42,7 +42,7 @@
       <iframe :src="trailer" class="w-5/6 h-2/6 md:w-1/3"></iframe>
       <button
         v-if="!isFavorited"
-        class="relative inline-flex items-center justify-center px-10 py-4 overflow-hidden font-mono font-medium tracking-tighter text-white bg-gray-800 rounded-lg group mt-10"
+        class="relative grtoup inline-flex items-center justify-center px-10 py-4 overflow-hidden font-mono font-medium tracking-tighter text-white bg-gray-800 rounded-lg group mt-10"
         @click="save(obj)"
       >
         <span
@@ -51,11 +51,11 @@
         <span
           class="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"
         ></span>
-        <span class="relative">Salvar <i class="fa-solid fa-heart"></i></span>
+        <span class="relative">Salvar <i class="fa-solid fa-heart group-hover:animate-bounce"></i></span>
       </button>
       <button
         v-if="isFavorited"
-        class="relative inline-flex items-center justify-center px-10 py-4 overflow-hidden font-mono font-medium tracking-tighter text-white bg-gray-800 rounded-lg group mt-10"
+        class=" group relative inline-flex items-center justify-center px-10 py-4 overflow-hidden font-mono font-medium tracking-tighter text-white bg-gray-800 rounded-lg group mt-10"
         @click="remove(obj)"
       >
         <span
@@ -65,7 +65,7 @@
           class="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"
         ></span>
         <span class="relative"
-          ><i class="fa-solid fa-heart-crack"></i> Remover</span
+          ><i class="fa-solid fa-heart-crack group-hover:animate-bounce"></i> Remover</span
         >
       </button>
     </div>

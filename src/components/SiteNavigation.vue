@@ -66,5 +66,6 @@ function openMenu() {
     navOpenMenu.value = "flex-row";
     menu.value = "fa-solid fa-bars";
   }
+  
 }
 </script>
