@@ -24,6 +24,7 @@ let removeEffect = ref('hover:scale-95')
 const remove = () => {
   removeEffect.value = 'scale-0'
   storage.removeByID(props.itemObj.id);
+  router.go()
 };
 
 const goToUrl = () => {
