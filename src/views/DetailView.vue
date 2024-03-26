@@ -39,7 +39,7 @@
         </p>
       </div>
 
-      <iframe :src="trailer" class="w-5/6 h-2/6 md:w-1/3"></iframe>
+      <iframe :src="trailer" class="w-5/6 h-2/6 md:w-1/3" allowfullscreen></iframe>
       <button
         v-if="!isFavorited"
         class="relative grtoup inline-flex items-center justify-center px-10 py-4 overflow-hidden font-mono font-medium tracking-tighter text-white bg-gray-800 rounded-lg group mt-10"
