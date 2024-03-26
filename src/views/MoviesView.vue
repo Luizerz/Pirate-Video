@@ -17,9 +17,7 @@ const nextPage = () => {
       params: { page: page < maxPage ? page + 1 : page },
       replace: true,
     })
-    .then(() => {
-      router.go();
-    });
+    .then(() => {});
 };
 const prevPage = () => {
   router
@@ -28,9 +26,7 @@ const prevPage = () => {
       params: { page: page > 1 ? page - 1 : 1 },
       replace: true,
     })
-    .then(() => {
-      router.go();
-    });
+    .then(() => {});
 };
 </script>
 

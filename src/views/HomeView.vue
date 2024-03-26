@@ -3,7 +3,7 @@ import { getDataToHomePage } from "@/service/apiService.js";
 import PaginationView from "@/components/PaginationView.vue";
 import router from "@/router/index.js";
 import { defineAsyncComponent, watch, watchEffect } from "vue";
-import { useRoute } from "vue-router";
+import { onBeforeRouteUpdate, useRoute } from "vue-router";
 
 const props = defineProps(["page"]);
 const page = Number(props.page);
@@ -18,9 +18,6 @@ const nextPage = async () => {
       name: "home",
       params: { page: page < maxPage ? page + 1 : page },
     })
-    .then(() => {
-      router.go();
-    });
 };
 const prevPage = () => {
   router
@@ -28,9 +25,6 @@ const prevPage = () => {
       name: "home",
       params: { page: page > 1 ? page - 1 : 1 },
     })
-    .then(() => {
-      router.go();
-    });
 };
 </script>
 

@@ -17,9 +17,6 @@ const nextPage = () => {
       params: { page: page < maxPage ? page + 1 : page },
       replace: true,
     })
-    .then(() => {
-      router.go();
-    });
 };
 const prevPage = () => {
   router
@@ -28,14 +25,11 @@ const prevPage = () => {
       params: { page: page > 1 ? page - 1 : 1 },
       replace: true,
     })
-    .then(() => {
-      router.go();
-    });
 };
 </script>
 
 <template>
-  <div class="grid grid-cols-2 md:grid-cols-5 gap-10 py-4 px-12 self-center">
+  <div class="grid grid-cols-2 md:grid-cols-5 gap-10 py-4 px-24 self-center">
     <CardView v-for="item in results" :key="item.id" :itemObj="item" />
   </div>
   <PaginationView

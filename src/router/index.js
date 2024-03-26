@@ -1,22 +1,27 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+// import HomeView from "../views/HomeView.vue";
 import MoviesView from "../views/MoviesView.vue";
 import SeriesView from "../views/SeriesView.vue";
 import FavoritesView from "../views/FavoritesView.vue";
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory("/"),
   routes: [
     {
       path: "/",
-      redirect: { name: 'home', params: {page:1}},
+      redirect: { name: "home", params: { page: 1 } },
       name: "initial",
-    },
-    {
-      path: "/home/:page",
-      name: "home",
-      component: HomeView,
-      props: true,
+      children: [
+        {
+          path: "/home/:page",
+          name: "home",
+          component: () => import('@/views/HomeView.vue'),
+          props: true,
+          meta: {
+            watchParam: "page",
+          },
+        },
+      ],
     },
     {
       path: "/movies/:page",
