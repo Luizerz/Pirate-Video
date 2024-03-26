@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const api_key = import.meta.env.VITE_API_KEY
+const api_key = import.meta.env.VITE_API_KEY;
 
 async function getDataToHomePage(page) {
   const pageNumber = page ? page : 1;
@@ -42,7 +42,7 @@ async function getDataToSeriesPage(page) {
 async function getDataByID(id, type) {
   const itemID = id ? id : 3000;
   const itemType = type ? type : "movie";
- 
+
   const url = `https://api.themoviedb.org/3/${itemType}/${itemID}?api_key=${api_key}`;
   let data = await axios
     .get(url)
@@ -55,14 +55,17 @@ async function getDataByID(id, type) {
 
 async function getTrailerByID(id, type) {
   const url = `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${api_key}`;
+  console.log(url);
   let data = await axios
     .get(url)
     .then((res) => {
       return res.data;
     })
     .catch((err) => console.error(err));
+    
   let dataFiltered = data.results.filter((e) => e.type == "Trailer");
-  return dataFiltered == undefined ? "" : dataFiltered[0].key
+  return dataFiltered  ? data.results.pop().key : dataFiltered[0].key
+ 
 }
 
 export {
