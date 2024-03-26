@@ -2,7 +2,7 @@
   <header class="sticky overflow top-0 bg-movie-primary shadow-lg z-10">
     <nav
       :class="navOpenMenu"
-      class=" px-24 flex sm:flex-row items-center justify-between sm:justify-normal gap-4 text-white py-6"
+      class=" px-4 sm:px24  flex sm:flex-row items-center justify-between sm:justify-normal gap-4 text-white py-6"
     >
       <RouterLink
         :to="{ name: 'home', params: { page: 1 } }"

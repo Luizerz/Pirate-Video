@@ -31,7 +31,7 @@ const prevPage = () => {
 </script>
 
 <template>
-  <div class="grid grid-cols-2 md:grid-cols-5 gap-10 py-4 px-24 self-center">
+  <div class="grid grid-cols-1 md:grid-cols-5 gap-10 py-4 px-12 md:px-24 self-center">
     <CardView v-for="item in results" :key="item.id" :itemObj="item" />
   </div>
   <PaginationView
